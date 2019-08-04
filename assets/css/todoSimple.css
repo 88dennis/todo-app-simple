@@ -1,0 +1,26 @@
+body {
+    background-color: aqua
+}
+
+#container {
+    margin: 0 auto;
+    width: 360px;
+    border: 2px solid gray;
+}
+
+.listOfTodos {
+    background: none;
+}
+
+.done {
+    color: red;
+}
+
+.ulClass {
+    font-size: 30px;
+}
+
+.clickedToDo {
+    color: red;
+    text-decoration: line-through;
+}
