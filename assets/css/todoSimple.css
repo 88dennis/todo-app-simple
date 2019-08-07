@@ -18,9 +18,18 @@ body {
 
 .ulClass {
     font-size: 30px;
+    list-style: none;
 }
 
 .clickedToDo {
     color: red;
     text-decoration: line-through;
+}
+
+.removeBtn {
+    display: inliine-block;
+}
+
+.hell {
+    list-style: none;
 }

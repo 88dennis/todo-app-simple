@@ -46,41 +46,34 @@ let listOfTodos = [];
 toDoInput.addEventListener("change", function() {
     let newTodo = toDoInput.value;
     toDosArr.unshift(newTodo)
-
     let text = "<ul>"
     for (i = 0; i < toDosArr.length; i++) {
-        text = text + '<li class="hell">' + toDosArr[i] + '</li>'
+        text = text + '<li class="hell"><span class="removeBtn">x </span>' + toDosArr[i] + '</li>'
     }
     text = text + "</ul>"
     listDisplay.innerHTML = text;
     listOfTodos = document.querySelectorAll(".hell")
+    let removeBtn = document.querySelectorAll(".removeBtn")
+    let parent = document.querySelector("ul");
+    let child = document.querySelectorAll(".hell")
 
-    for (i = 0; i < listOfTodos.length; i++) {
-        listOfTodos[i].addEventListener("click", function() {
-            this.classList.toggle("clickedToDo")
+    for (i = 0; i < removeBtn.length; i++) {
+        removeBtn[i].addEventListener("click", function(event) {
+            console.log(removeBtn)
+            this.style.color = "blue"
+            this.parentNode.style.display = "none"
+            event.stopPropagation();
         })
     }
+
+    // for (i = 0; i < listOfTodos.length; i++) {
+    //     listOfTodos[i].addEventListener("click", function(event) {
+    //         this.classList.toggle("clickedToDo");
+    //         event.stopPropagation();
+    //     })
+    // }
+
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // let body = document.querySelector("body")
