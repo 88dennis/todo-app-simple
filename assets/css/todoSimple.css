@@ -16,8 +16,8 @@ body {
     color: red;
 }
 
-.ulClass {
-    font-size: 30px;
+ul {
+    margin: 0;
     list-style: none;
 }
 

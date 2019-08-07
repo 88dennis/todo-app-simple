@@ -38,6 +38,7 @@
 //     })
 // }
 
+
 let toDoInput = document.querySelector("input")
 let listDisplay = document.querySelector("#listContainer")
 let toDosArr = [];
@@ -46,25 +47,54 @@ let listOfTodos = [];
 toDoInput.addEventListener("change", function() {
     let newTodo = toDoInput.value;
     toDosArr.unshift(newTodo)
+    console.log(toDosArr)
     let text = "<ul>"
+
     for (i = 0; i < toDosArr.length; i++) {
-        text = text + '<li class="hell"><span class="removeBtn">x </span>' + toDosArr[i] + '</li>'
+        text = text + '<li class="hell">' + '<span class="removeBtn">x </span><span class="textTodo">' + toDosArr[i] + ' </span></li>'
     }
     text = text + "</ul>"
     listDisplay.innerHTML = text;
     listOfTodos = document.querySelectorAll(".hell")
+    console.log(listOfTodos)
     let removeBtn = document.querySelectorAll(".removeBtn")
-    let parent = document.querySelector("ul");
-    let child = document.querySelectorAll(".hell")
 
     for (i = 0; i < removeBtn.length; i++) {
-        removeBtn[i].addEventListener("click", function(event) {
+        removeBtn[i].addEventListener("click", function() {
             console.log(removeBtn)
             this.style.color = "blue"
-            this.parentNode.style.display = "none"
+            toDoItem = this.nextSibling.innerText;
+            console.log(toDoItem)
+            let index = toDosArr.indexOf(toDoItem);
+            console.log(index)
+            if (index > -1) {
+                toDosArr.splice(index, 1);
+            }
+
+            this.parentNode.remove();
             event.stopPropagation();
+            // toDosArr.pop()
+            console.log(toDosArr)
+
+
+
+            //     // this.parentNode.style.display = "none";
+            // 
+            // 
+            //
+            // console.log(index, toDoItem)
+
+            // console.log(toDosArr);
+
+
         })
     }
+
+    // function spliceThis() {
+
+    // }
+
+
 
     // for (i = 0; i < listOfTodos.length; i++) {
     //     listOfTodos[i].addEventListener("click", function(event) {
@@ -75,6 +105,9 @@ toDoInput.addEventListener("change", function() {
 
 })
 
+
+
+// array = [2, 9]
 
 // let body = document.querySelector("body")
 // let isBackground = false;
