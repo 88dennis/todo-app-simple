@@ -1,109 +1,72 @@
-//check by clicking
-// $("li").click(function() {
-//     if ($(this).css("color") === "rgb(128, 128, 128)") {
-//         $(this).css("color", "black")
-//         $(this).css("text-decoration", "none")
-//     } else {
-//         $(this).css({
-//             color: "gray",
-//             textDecoration: "line-through"
-//         })
-//     }
-// })
-
-// let toDoInput = document.querySelector("input")
-// let listDisplay = document.querySelector("#listContainer")
-// let toDosArr = [];
-
-// toDoInput.addEventListener("change", function() {
-
-//     let newTodo = toDoInput.value;
-//     toDosArr.push(newTodo)
-//     let text = "<ul class='ulClass'/>"
-//     for (let i = 0; i < toDosArr.length; i++) {
-//         let del = "<li class='liClass'>" + "<button>X</button>" + toDosArr[i] + "</li >"
-//         text = text + del
-//         console.log(del)
-//     }
-//     text = text + "</ul>"
-//     listDisplay.innerHTML = text;
-
-//     console.log(toDosArr)
-// })
-
-// let toDoItems = document.querySelectorAll(".liClass")
-// for (let i = 0; toDoItems.length; i++) {
-//     toDoItems[i].addEventListener("mouseover", function() {
-//         this.style.color = "red"
-//     })
-// }
-
-
 let toDoInput = document.querySelector("input")
 let listDisplay = document.querySelector("#listContainer")
 let toDosArr = [];
 let listOfTodos = [];
 
-toDoInput.addEventListener("change", function() {
-    let newTodo = toDoInput.value;
-    toDosArr.unshift(newTodo)
-    console.log(toDosArr)
-    let text = "<ul>"
+// function clearField() {
+//     toDoInput.addEventListener("keypress", function(event) {
+//         if (event.which === 13) {
+//             toDoInput.value = ""
+//             console.log(toDoInput.value, "dennisisisisisi")
+//         }
+//     })
+// }
 
-    for (i = 0; i < toDosArr.length; i++) {
-        text = text + '<li class="hell">' + '<span class="removeBtn">x </span><span class="textTodo">' + toDosArr[i] + ' </span></li>'
+toDoInput.addEventListener("keypress", function(event) {
+    if (event.which === 13) {
+        toDosArr.unshift(toDoInput.value);
+        console.log(toDosArr)
+        let text = "<ul>"
+        for (i = 0; i < toDosArr.length; i++) {
+            text = text + '<li class="hell">' + '<span class="removeBtn"><i class="fas fa-trash-alt"></i></span><span class="textTodo">' + toDosArr[i] + ' </span></li>'
+        }
+        text = text + "</ul>"
+        listDisplay.innerHTML = text;
+        listOfTodos = document.querySelectorAll(".hell");
+        toDoInput.value = "";
+        console.log(listOfTodos);
+        let removeBtn = document.querySelectorAll(".removeBtn");
+        for (i = 0; i < removeBtn.length; i++) {
+            removeBtn[i].addEventListener("click", function() {
+                console.log(removeBtn)
+                this.style.color = "blue"
+                toDoItem = this.nextSibling.innerText;
+                console.log(toDoItem)
+                let index = toDosArr.indexOf(toDoItem);
+                console.log(index)
+                if (index > -1) {
+                    toDosArr.splice(index, 1);
+                }
+                let fadeTarget = this.parentNode;
+                console.log(fadeTarget)
+                let fadeEffect = setInterval(function() {
+                    if (!fadeTarget.style.opacity) {
+                        fadeTarget.style.opacity = 1;
+                    }
+                    if (fadeTarget.style.opacity > 0) {
+                        fadeTarget.style.opacity -= 0.1;
+                    } else {
+                        clearInterval(fadeEffect);
+                    }
+                }, 50);
+                setInterval(function() {
+                    fadeTarget.remove();
+                }, 500)
+                console.log(fadeTarget)
+                event.stopPropagation();
+                console.log(toDosArr)
+            })
+        }
+        // for (i = 0; i < listOfTodos.length; i++) {
+        //     listOfTodos[i].addEventListener("click", function(event) {
+        //         this.classList.toggle("clickedToDo");
+        //         event.stopPropagation();
+        //     })
+        // }
     }
-    text = text + "</ul>"
-    listDisplay.innerHTML = text;
-    listOfTodos = document.querySelectorAll(".hell")
-    console.log(listOfTodos)
-    let removeBtn = document.querySelectorAll(".removeBtn")
-
-    for (i = 0; i < removeBtn.length; i++) {
-        removeBtn[i].addEventListener("click", function() {
-            console.log(removeBtn)
-            this.style.color = "blue"
-            toDoItem = this.nextSibling.innerText;
-            console.log(toDoItem)
-            let index = toDosArr.indexOf(toDoItem);
-            console.log(index)
-            if (index > -1) {
-                toDosArr.splice(index, 1);
-            }
-
-            this.parentNode.remove();
-            event.stopPropagation();
-            // toDosArr.pop()
-            console.log(toDosArr)
-
-
-
-            //     // this.parentNode.style.display = "none";
-            // 
-            // 
-            //
-            // console.log(index, toDoItem)
-
-            // console.log(toDosArr);
-
-
-        })
-    }
-
-    // function spliceThis() {
-
-    // }
-
-
-
-    // for (i = 0; i < listOfTodos.length; i++) {
-    //     listOfTodos[i].addEventListener("click", function(event) {
-    //         this.classList.toggle("clickedToDo");
-    //         event.stopPropagation();
-    //     })
-    // }
-
 })
+
+// toDoInput.addEventListener("keypress")
 
 
 
