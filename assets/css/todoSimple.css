@@ -11,8 +11,8 @@ body {
 #container {
     margin: 100px auto;
     width: 360px;
-    border: 2px solid gray;
-    box-sizing: border-box;
+    background-color: #f7f7f7;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -25,35 +25,58 @@ h1 {
     font-weight: 400;
 }
 
-input {
-    width: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    height: 40px;
-}
-
-.listOfTodos {
-    background: none;
-}
-
-.done {
-    color: red;
+.fa-plus {
+    float: right;
 }
 
 ul {
-    margin: 0;
     list-style: none;
-}
-
-.clickedToDo {
-    color: red;
-    text-decoration: line-through;
-}
-
-.removeBtn {
-    display: inliine-block;
+    padding: 0;
+    margin: 0;
 }
 
 .hell {
-    list-style: none;
+    background-color: #fff;
+    height: 40px;
+    line-height: 40px;
+}
+
+.hell:nth-child(2n) {
+    background: #f7f7f7;
+}
+
+input {
+    font-size: 18px;
+    color: #2980b9;
+    background: #f7f7f7;
+    width: 100%;
+    padding: 13px 13px 13px 20px;
+    box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, 0);
+}
+
+input:focus {
+    background-color: white;
+    border: 3px solid #2980b9;
+}
+
+.removeBtn {
+    background-color: red;
+    height: 40px;
+    margin-right: 20px;
+    text-align: center;
+    color: white;
+    width: 0px;
+    display: inline-block;
+    transition: 0.2s linear;
+    opacity: 0;
+}
+
+.hell:hover .removeBtn {
+    width: 40px;
+    opacity: 1;
+}
+
+.showInputField {
+    display: none;
 }

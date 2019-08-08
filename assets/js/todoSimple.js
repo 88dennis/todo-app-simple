@@ -2,6 +2,11 @@ let toDoInput = document.querySelector("input")
 let listDisplay = document.querySelector("#listContainer")
 let toDosArr = [];
 let listOfTodos = [];
+let showInputField = document.querySelector(".fa-plus");
+
+showInputField.addEventListener("click", function() {
+    toDoInput.classList.toggle("showInputField");
+})
 
 // function clearField() {
 //     toDoInput.addEventListener("keypress", function(event) {
