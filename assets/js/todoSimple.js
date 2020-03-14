@@ -35,13 +35,16 @@ toDoInput.addEventListener("keypress", function(event) {
             removeBtn[i].addEventListener("click", function() {
                 console.log(removeBtn)
                 this.style.color = "blue"
-                toDoItem = this.nextSibling.innerText;
+                //SPAN IS THE REMOVE BUTTON; YOU NEED TO ACCESS THE NEXT SPAN WITH THE INNERTEXT
+                let toDoItem = this.nextSibling.innerText;
                 console.log(toDoItem)
                 let index = toDosArr.indexOf(toDoItem);
                 console.log(index)
+                console.log(toDosArr, "DENNISSSS")
                 if (index > -1) {
                     toDosArr.splice(index, 1);
                 }
+                console.log(toDosArr, "sarmssss")
                 let fadeTarget = this.parentNode;
                 console.log(fadeTarget)
                 let fadeEffect = setInterval(function() {
