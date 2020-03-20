@@ -80,3 +80,7 @@ input:focus {
 .showInputField {
     display: none;
 }
+
+.todoClassicLinkCont {
+    text-align: center;
+}
